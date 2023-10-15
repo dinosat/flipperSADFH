@@ -65,7 +65,9 @@ public class PinballMachine {
     public void setState(PinballMachineState state) {
         this.state = state;
     }
-
+    public PinballMachineState getState() {
+        return state;
+    }
     // Get the current state of the machine
     public String getStatus() {
         return state.toString();

@@ -9,13 +9,26 @@ public class EndState implements PinballMachineState {
 
     @Override
     public void insertCoin() {
-        System.out.println("Game over. You can't insert a coin.");
+        if (pinballMachine.getState() instanceof NoCreditState) {
+            // If in NoCreditState, insert a coin to transition to ReadyState
+            pinballMachine.insertCoin();
+            System.out.println("You have inserted a coin. Game ready.");
+        } else {
+            System.out.println("No credit available. Game over.");
+        }
     }
 
     @Override
     public void pressStartButton() {
-        System.out.println("Game over. You can't start a new game.");
+        if (pinballMachine.getState() instanceof NoCreditState) {
+            // If in NoCreditState, press start to transition to ReadyState
+            pinballMachine.getState().pressStartButton();
+            System.out.println("Game started!");
+        } else {
+            System.out.println("No credit available. Game over.");
+        }
     }
+
 
     @Override
     public void ballLost() {
