@@ -9,7 +9,7 @@ public class PinballMachine {
     private PinballMachineState state;
     private int credits = 0;
     private int ballsLost = 0;
-    private int maxBalls = 3;
+    private  int maxBalls = 3;
 
     // Private constructor to prevent instantiation from other classes
     private PinballMachine() {
@@ -32,10 +32,17 @@ public class PinballMachine {
     // Insert a coin
     public void insertCoin() {
         state.insertCoin();
+        if(credits== 0){
+            credits++;
+        }
     }
     public void incrementCredits() {
-        credits++;
+        ++credits;
         System.out.println("Credit increased. Total credits: " + credits);
+    }
+
+    public void decrementCredits(){
+        --credits;
     }
     // Press the start button
     public void pressStartButton() {
@@ -61,6 +68,18 @@ public class PinballMachine {
         return maxBalls;
     }
 
+    public void setMaxBalls(int maxBalls) {
+        this.maxBalls = maxBalls;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setBallsLost(int ballsLost) {
+        this.ballsLost = ballsLost;
+    }
+
     // Set the machine's state
     public void setState(PinballMachineState state) {
         this.state = state;
@@ -72,12 +91,4 @@ public class PinballMachine {
     public String getStatus() {
         return state.toString();
     }
-
-    // Accept a visitor to perform actions on elements
-    public void acceptVisitor(Visitor visitor) {
-        for (PinballElement element : elements) {
-            element.accept(visitor);
-        }
-    }
-
 }

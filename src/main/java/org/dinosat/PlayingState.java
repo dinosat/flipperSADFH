@@ -1,7 +1,8 @@
 package org.dinosat;
 
 public class PlayingState implements PinballMachineState {
-    private  final PinballMachine pinballMachine;
+    private final PinballMachine pinballMachine;
+
     public PlayingState(PinballMachine pinballMachine) {
         this.pinballMachine = pinballMachine;
     }
@@ -22,13 +23,17 @@ public class PlayingState implements PinballMachineState {
         System.out.println("Ball lost. Remaining balls: " + (pinballMachine.getMaxBalls() - pinballMachine.getBallsLost()));
 
         if (pinballMachine.getBallsLost() >= pinballMachine.getMaxBalls()) {
-            // Check if all balls are lost; if so, transition to EndState
-            pinballMachine.setState(new EndState(pinballMachine));
+            // Check if all balls are lost; if so, transition to ReadyState or NoCreditState
+            if (pinballMachine.getMaxBalls() > 0) {
+                pinballMachine.setState(new ReadyState(pinballMachine));
+            } else {
+                pinballMachine.setState(new NoCreditState(pinballMachine));
+            }
         }
     }
+        @Override
+        public String toString () {
+            return "Playing State";
+        }
 
-    @Override
-    public String toString() {
-        return "Playing State";
-    }
 }

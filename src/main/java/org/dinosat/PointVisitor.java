@@ -10,6 +10,5 @@ public class PointVisitor implements Visitor {
     @Override
     public void visit(Target target) {
         System.out.println("Calculating points for hitting a target.");
-
     }
 }

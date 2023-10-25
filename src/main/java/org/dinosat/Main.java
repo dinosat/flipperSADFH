@@ -1,9 +1,10 @@
 package org.dinosat;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
-
+    private static Map<String, Integer> leaderboard = new HashMap<>(); // Create a leaderboard map to store scores.
+    private static int score = 0;
     public static void main(String[] args) {
         PinballMachine pinballMachine = PinballMachine.getInstance();
         setupGame(pinballMachine);
@@ -29,7 +30,7 @@ public class Main {
     private static void playGame(PinballMachine pinballMachine) {
         Scanner scanner = new Scanner(System.in);
         boolean isRunning = true;
-        boolean isGameRunning = false; // To keep track of the game state
+        boolean isGameRunning = false;
         Visitor pointVisitor = new PointVisitor();
         Visitor resetVisitor = new ResetVisitor();
         while (isRunning) {
@@ -57,24 +58,38 @@ public class Main {
                         awardPoints.execute();
                         awardPoints.toString();
                         new Target().accept(pointVisitor);
+                        score += 100;
                         break;
                     case 3:
                         // Simulate losing a ball
                         pinballMachine.getState().ballLost();
+                        if (pinballMachine.getBallsLost() >= pinballMachine.getMaxBalls()) {
+                            // If all balls are lost, transition to NoCreditState or ReadyState
+                            if (pinballMachine.getCredits() >= 1) {
+                                pinballMachine.setMaxBalls(3);
+                                pinballMachine.setState(new ReadyState(pinballMachine));
+
+                            } else {
+                                pinballMachine.setMaxBalls(3);
+                                pinballMachine.setState(new NoCreditState(pinballMachine));
+
+                            }
+                            pinballMachine.setBallsLost(0);
+                            pinballMachine.decrementCredits();
+                            System.out.println("Enter your name: ");
+                            String playerName = scanner.nextLine();
+                            leaderboard.put(playerName,score);
+                            System.out.println("Game Over. Your score is: " + score);
+                            isGameRunning = false;
+                            score = 0;
+                        }
                         break;
                     case 4:
-                        isRunning = false;
+                        isGameRunning = false;
                         break;
                     default:
                         System.out.println("Invalid action. Please try again.");
                         break;
-                }
-
-                // Check if all balls are lost and end the game if necessary
-                if (pinballMachine.getBallsLost() >= pinballMachine.getMaxBalls()) {
-                    isGameRunning = false;
-
-                    pinballMachine.setState(new EndState(pinballMachine));
                 }
             } else {
                 System.out.println("Choose an action:");
@@ -95,13 +110,20 @@ public class Main {
                         } else if (pinballMachine.getState() instanceof ReadyState) {
                             pinballMachine.getState().pressStartButton();
                             System.out.println("Game started!");
-                            isGameRunning = true; // Start the game
+                            isGameRunning = true;
                         } else {
                             System.out.println("The game is already in progress.");
                         }
                         break;
                     case 3:
                         isRunning = false;
+                        List<Map.Entry<String, Integer>> sortedLeaderboard = new ArrayList<>(leaderboard.entrySet());
+                        sortedLeaderboard.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+
+                        System.out.println("Leaderboard:");
+                        for (Map.Entry<String, Integer> entry : sortedLeaderboard) {
+                            System.out.println(entry.getKey() + ": " + entry.getValue());
+                        }
                         break;
                     default:
                         System.out.println("Invalid choice. Please try again.");
@@ -113,4 +135,5 @@ public class Main {
         // Close the scanner when done
         scanner.close();
     }
+
 }
