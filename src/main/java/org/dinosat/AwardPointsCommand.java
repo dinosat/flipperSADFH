@@ -11,6 +11,7 @@ public class AwardPointsCommand implements Command {
     @Override
     public void execute() {
         System.out.println("Awarding " + points + " points via command");
+        element.accept(new PointVisitor(points));
         element.hit();
     }
 }
