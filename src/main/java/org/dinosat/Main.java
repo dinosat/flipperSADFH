@@ -61,6 +61,7 @@ public class Main {
         } else if (pinballMachine.getState() instanceof ReadyState) {
             pinballMachine.getState().pressStartButton();
             System.out.println("Game started!");
+            pinballMachine.decrementCredits();
             isGameRunning = true;
         } else {
             System.out.println("The game is already in progress.");
@@ -130,8 +131,6 @@ public class Main {
             pinballMachine.setMaxBalls(3);
             pinballMachine.setState(new NoCreditState(pinballMachine));
         }
-        pinballMachine.decrementCredits();
-
         System.out.println("Enter your name: ");
         String playerName = scanner.nextLine();
         leaderboard.put(playerName, currentScore);

@@ -35,14 +35,15 @@ public class PinballMachine {
         if(credits== 0){
             credits++;
         }
+        System.out.println("Credit increased. Total credits: " + credits);
     }
     public void incrementCredits() {
-        ++credits;
-        System.out.println("Credit increased. Total credits: " + credits);
+        credits++;
     }
 
     public void decrementCredits(){
-        --credits;
+        credits--;
+        System.out.println("Your Credit goes down and down (-1). Total credits: " + credits);
     }
     // Press the start button
     public void pressStartButton() {
