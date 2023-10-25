@@ -1,4 +1,6 @@
-package org.dinosat;
+package org.dinosat.commands;
+
+import org.dinosat.elements.PinballElement;
 
 public class OpenRampCommand implements Command {
     private final PinballElement element;

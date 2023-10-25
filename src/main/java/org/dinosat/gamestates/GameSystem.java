@@ -1,4 +1,4 @@
-package org.dinosat;
+package org.dinosat.gamestates;
 
 public interface GameSystem {
     void startGame();

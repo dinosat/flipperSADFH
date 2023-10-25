@@ -1,4 +1,4 @@
-package org.dinosat;
+package org.dinosat.display;
 
 public class FontFamily2Factory implements PinballDisplayFactory {
     @Override

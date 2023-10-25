@@ -1,4 +1,4 @@
-package org.dinosat;
+package org.dinosat.display;
 
 public class FontFamily1Factory implements PinballDisplayFactory {
 

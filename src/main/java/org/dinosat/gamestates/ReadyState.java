@@ -1,4 +1,4 @@
-package org.dinosat;
+package org.dinosat.gamestates;
 
 public class ReadyState implements PinballMachineState {
     private final PinballMachine pinballMachine;

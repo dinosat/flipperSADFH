@@ -1,4 +1,6 @@
-package org.dinosat;
+package org.dinosat.elements;
+
+import org.dinosat.visitors.Visitor;
 
 public class Ramp implements PinballElement {
     @Override

@@ -1,4 +1,6 @@
-package org.dinosat;
+package org.dinosat.gamestates;
+
+import org.dinosat.elements.PinballElement;
 
 import java.util.ArrayList;
 import java.util.List;

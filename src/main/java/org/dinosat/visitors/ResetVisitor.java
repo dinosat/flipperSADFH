@@ -1,4 +1,7 @@
-package org.dinosat;
+package org.dinosat.visitors;
+
+import org.dinosat.elements.Ramp;
+import org.dinosat.elements.Target;
 
 public class ResetVisitor implements Visitor {
     @Override

@@ -1,4 +1,4 @@
-package org.dinosat;
+package org.dinosat.display;
 
 public class PinballDisplay implements Display {
     private String fontStyle;
