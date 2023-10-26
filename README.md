@@ -1,7 +1,5 @@
 Pinball Machine Simulation
 
-![Pinball Machine](pinball_machine_image.jpg)
-
 ## Overview
 
 Welcome to the Pinball Machine Simulation! This Java program emulates the experience of a classic pinball machine. It provides a fun and interactive way to enjoy the excitement of pinball without leaving your computer. Here's a quick overview of the program and its standout features:
@@ -44,3 +42,7 @@ To run the Pinball Machine Simulation:
 1. Compile and execute the program using a Java IDE or command line.
 2. Follow on-screen instructions to insert coins, start games, and enjoy a round of pinball.
 3. Try to achieve the highest score and see your name on the leaderboard!
+
+https://github.com/dinosat/flipperSADFH/assets/105964469/7a0a7c25-f8f3-4643-9780-6c6c4705859f
+
+
