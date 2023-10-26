@@ -43,6 +43,9 @@ To run the Pinball Machine Simulation:
 2. Follow on-screen instructions to insert coins, start games, and enjoy a round of pinball.
 3. Try to achieve the highest score and see your name on the leaderboard!
 
-https://github.com/dinosat/flipperSADFH/assets/105964469/7a0a7c25-f8f3-4643-9780-6c6c4705859f
+## Gameplay Video
+
+[Watch a gameplay video here](https://github.com/dinosat/flipperSADFH/assets/105964469/7a0a7c25-f8f3-4643-9780-6c6c4705859f)
+
 
 
