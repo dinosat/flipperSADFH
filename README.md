@@ -45,7 +45,11 @@ To run the Pinball Machine Simulation:
 
 ## Gameplay Video
 
-[Watch a gameplay video here](https://github.com/dinosat/flipperSADFH/assets/105964469/7a0a7c25-f8f3-4643-9780-6c6c4705859f)
+[Watch a gameplay video here](https://github.com/dinosat/flipperSADFH/assets/105964469/c1a279eb-4c6d-425a-ae17-ccc6351d96a8)
+
+
+
+
 
 
 
